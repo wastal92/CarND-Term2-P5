@@ -46,7 +46,7 @@ The motion model is a kinematic model without the complex interactions between t
 
 The state update equations are given by:
 
-![Kinematic State update equations](https://raw.githubusercontent.com/sohonisaurabh/CarND-MPC-Project/master/image-resources/kinematic-state-update-equations.png)
+![Kinematic State update equations](https://github.com/wastal92/CarND-Term2-P5/blob/master/kinematic-state-update-equations.png)
 
 ### Timestep Length and Elapsed Duration (N & dt)
 
