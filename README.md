@@ -42,7 +42,7 @@ Self-Driving Car Engineer Nanodegree Program
 
 ### The Model
 
-The motion model is a Kinematic model without the complex interactions between the tires and the road. The state includes four parameters: the x coordinate of position (x), the y coordinate of position (y), the heading direction of car in vehicle's coordinate system (psi), the magnitude of velocity of car (v). The actuator inputs used to control the car are the magnitude of steering (delta) and the magnitude of throttle (a).
+The motion model is a kinematic model without the complex interactions between the tires and the road. The state includes four parameters: the x coordinate of position (x), the y coordinate of position (y), the heading direction of car in vehicle's coordinate system (psi), the magnitude of velocity of car (v). The actuator inputs used to control the car are the magnitude of steering (delta) and the magnitude of throttle (a).
 
 The state update equations are given by:
 
