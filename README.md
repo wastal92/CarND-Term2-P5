@@ -38,6 +38,28 @@ Self-Driving Car Engineer Nanodegree Program
 3. Compile: `cmake .. && make`
 4. Run it: `./mpc`.
 
+## Implementation
+
+### The Model
+
+The motion model is a Kinematic model without the complex interactions between the tires and the road. The state includes four parameters: the x coordinate of position (x), the y coordinate of position (y), the heading direction of car in vehicle's coordinate system (psi), the magnitude of velocity of car (v). The actuator inputs used to control the car are the magnitude of steering (delta) and the magnitude of throttle (a).
+
+The state update equations are given by:
+
+![Kinematic State update equations](https://raw.githubusercontent.com/sohonisaurabh/CarND-MPC-Project/master/image-resources/kinematic-state-update-equations.png)
+
+### Timestep Length and Elapsed Duration (N & dt)
+
+The number of points(`N`) and the time interval(`dt`) is used to predict the actuator inputs to the car ahead of time. Higher value of N ensures more number of estimates while lower value of dt ensures the estimates are closer in time. I have tried different combinations of `N` and `dt`. For example, `N=10 and dt=0.1` results to sharp turns as less number of discrete points between subsequent states while `N=10 and dt=0.05` leads to oscillation of car at slow speeds as too close estimates. So I decided to set N=7 and dt=0.07 as the final values.
+
+### Polynomial Fitting and MPC Preprocessing
+
+The waypoints provided by the simulator are transformed to the car coordinate system. Then a 3rd-degree polynomial is fitted to the transformed waypoints. These polynomial coefficients are used to calculate the `cte` and `epsi` later on. They are used by the solver as well to create a reference trajectory.
+
+### Model Predictive Control with Latency
+
+To handle actuator latency, the state values are calculated using the model and the delay interval. These values are used instead of the initial one. 
+
 ## Tips
 
 1. It's recommended to test the MPC on basic examples to see if your implementation behaves as desired. One possible example
